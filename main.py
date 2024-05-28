@@ -1,4 +1,4 @@
-from core.db_connection import Table, Connection
+from core.db_connection import Column, Table, Connection
 
 
 if __name__ == "__main__":
@@ -31,5 +31,8 @@ if __name__ == "__main__":
         'Finish': "'0'",
     })
     conn.add_new_transaction_query(args)
+
+    tables = conn.load_tables()
+    [print(i.pretty()) for i in tables]
 
     conn.close_connection()
