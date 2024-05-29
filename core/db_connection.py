@@ -21,7 +21,8 @@ class Table:
             columns.append(Column(name=arg))
         return columns
 
-    def __init__(self, table_name: str, columns_names: list=None, columns: list=None, values=None, args: dict={}):
+    def __init__(self, table_name: str, columns_names: list=None, columns: list=None,
+                 values=None, args: dict={}, garbage=None):
         if columns_names:
             columns = [Column(name=i) for i in columns_names]
 
@@ -35,6 +36,7 @@ class Table:
         self.args = args
         self.types = []
         self.values = values if values else []
+        self.garbage = garbage if garbage else None
 
 
     def setArgs(self, args):
