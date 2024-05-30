@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QHeaderView, QSizePolicy, QTableView, QWidget)
+    QLabel, QSizePolicy, QTextEdit, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -27,9 +27,12 @@ class Ui_Dialog(object):
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(230, 270, 166, 24))
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
-        self.tableEditView = QTableView(Dialog)
-        self.tableEditView.setObjectName(u"tableEditView")
-        self.tableEditView.setGeometry(QRect(20, 30, 361, 221))
+        self.editField = QTextEdit(Dialog)
+        self.editField.setObjectName(u"editField")
+        self.editField.setGeometry(QRect(30, 120, 321, 70))
+        self.label = QLabel(Dialog)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(140, 70, 141, 20))
 
         self.retranslateUi(Dialog)
 
@@ -38,5 +41,6 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Edit", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"input new value", None))
     # retranslateUi
 

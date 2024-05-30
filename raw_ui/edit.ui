@@ -26,14 +26,27 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QTableView" name="tableEditView">
+  <widget class="QTextEdit" name="editField">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>361</width>
-     <height>221</height>
+     <x>30</x>
+     <y>120</y>
+     <width>321</width>
+     <height>70</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>70</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>input new value</string>
    </property>
   </widget>
  </widget>

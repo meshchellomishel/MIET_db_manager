@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialogButtonBox, QHBoxLayout,
     QHeaderView, QLabel, QMainWindow, QPushButton,
-    QSizePolicy, QTableView, QTextEdit, QWidget)
+    QSizePolicy, QTableView, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -39,22 +39,16 @@ class Ui_MainWindow(object):
         self.label_3 = QLabel(self.centralwidget)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(280, 60, 91, 31))
-        self.label_4 = QLabel(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(340, 430, 91, 31))
         self.buttonBox = QDialogButtonBox(self.centralwidget)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(620, 550, 166, 24))
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
-        self.queryEdit = QTextEdit(self.centralwidget)
-        self.queryEdit.setObjectName(u"queryEdit")
-        self.queryEdit.setGeometry(QRect(20, 479, 731, 51))
         self.tableInfoView = QTableView(self.centralwidget)
         self.tableInfoView.setObjectName(u"tableInfoView")
-        self.tableInfoView.setGeometry(QRect(280, 90, 471, 331))
+        self.tableInfoView.setGeometry(QRect(280, 90, 471, 391))
         self.tablesListView = QTableView(self.centralwidget)
         self.tablesListView.setObjectName(u"tablesListView")
-        self.tablesListView.setGeometry(QRect(20, 90, 201, 331))
+        self.tablesListView.setGeometry(QRect(20, 90, 201, 391))
         self.layoutWidget = QWidget(self.centralwidget)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(500, 60, 254, 25))
@@ -76,6 +70,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.deleteButton)
 
+        self.label_4 = QLabel(self.centralwidget)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(20, 510, 57, 15))
+        self.status_label = QLabel(self.centralwidget)
+        self.status_label.setObjectName(u"status_label")
+        self.status_label.setGeometry(QRect(80, 510, 57, 15))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -88,9 +88,10 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"Lab8", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Tables", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Table info", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Query", None))
         self.editButton.setText(QCoreApplication.translate("MainWindow", u"Edit", None))
         self.addButton.setText(QCoreApplication.translate("MainWindow", u"Add", None))
         self.deleteButton.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Status:", None))
+        self.status_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
     # retranslateUi
 

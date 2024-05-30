@@ -16,8 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QHeaderView, QPushButton, QSizePolicy, QTableView,
-    QWidget)
+    QLabel, QSizePolicy, QTextEdit, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -28,15 +27,18 @@ class Ui_Dialog(object):
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(210, 260, 166, 24))
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
-        self.tableView = QTableView(Dialog)
-        self.tableView.setObjectName(u"tableView")
-        self.tableView.setGeometry(QRect(20, 20, 361, 221))
-        self.pushButton = QPushButton(Dialog)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(320, 210, 51, 23))
-        self.pushButton_2 = QPushButton(Dialog)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(260, 210, 51, 23))
+        self.textCreate = QTextEdit(Dialog)
+        self.textCreate.setObjectName(u"textCreate")
+        self.textCreate.setGeometry(QRect(20, 120, 341, 70))
+        self.label = QLabel(Dialog)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(80, 30, 261, 20))
+        font = QFont()
+        font.setPointSize(22)
+        self.label.setFont(font)
+        self.label_2 = QLabel(Dialog)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(80, 60, 161, 20))
 
         self.retranslateUi(Dialog)
 
@@ -45,7 +47,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Create", None))
-        self.pushButton.setText(QCoreApplication.translate("Dialog", u"+", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Dialog", u"x", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"Input new value", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"Example: val1;val2;val3", None))
     # retranslateUi
 

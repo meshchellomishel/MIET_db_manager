@@ -32,12 +32,15 @@ class Table:
         else:
             self.columns = self._getColumns(args)
 
+        self.columns_names = [i.name for i in self.columns]
         self.table_name = table_name
         self.args = args
         self.types = []
         self.values = values if values else []
         self.garbage = garbage if garbage else None
 
+    def setGarbage(self, garbage):
+        self.garbage = garbage
 
     def setArgs(self, args):
         self.args = args
@@ -58,7 +61,7 @@ class Table:
                 buf.append(i.name)
         
         for i in buf:
-            res.append(f"{i}={self.args[i]}")
+            res.append(f"{i}='{self.args[i]}'")
         
         return ",".join(res)
 
@@ -117,20 +120,33 @@ class Connection:
         except:
             pass
     
+    
+    def query_build_insert(self, table: Table):
+        return f"INSERT INTO {table.table_name} ({table.formatColumns()}) VALUES ({table.formatValues()});"
+
+    def query_build_update(self, table: Table):
+        return f"UPDATE {table.table_name} SET {table.formatUpdateArgs()} WHERE ID={table.args['id']};"
+
+    def query_build_delete(self, table: Table):
+        return f"DELETE FROM {table.table_name} WHERE ID={table.args['id']};"
+
+    def query_build_select(self, table: Table):
+        return f"SELECT {table.formatColumns()} FROM {table.table_name} ORDER BY id"
+
     def add_new_transaction_query(self, table: Table):
-        sql_query = f"INSERT INTO {table.table_name} ({table.formatColumns()}) VALUES ({table.formatValues()});"
+        sql_query = self.query_build_insert(table)
         return self.execute_query_with_params(sql_query)
 
     def update_transaction_query(self, table: Table):
-        sql_query = f"UPDATE {table.table_name} SET {table.formatUpdateArgs()} WHERE ID={table.args['id']};"
+        sql_query = self.query_build_update(table)
         return self.execute_query_with_params(sql_query)
 
     def delete_transaction_query(self, table: Table):
-        sql_query = f"DELETE FROM {table.table_name} WHERE ID={table.args['id']};"
+        sql_query = self.query_build_delete(table)
         return self.execute_query_with_params(sql_query)
     
     def select_transaction_query(self, table: Table):
-        sql_query = f"SELECT {table.formatColumns()} FROM {table.table_name}"
+        sql_query = self.query_build_select(table)
         return self.execute_query_with_params(sql_query)
 
     def load_columns(self, table: Table):
